@@ -62,7 +62,7 @@
         
       </div>
       <div class="Details">
-      	<h2 class="Title"><?php echo $add->title?><span>- Ad by <i><?php echo $add->name?></i></span></h2>
+      	<h2 class="Title"><?php echo $add->title?></h2>
         <div class="Ctrls">
         	<!--<a href="javascript:;"><span class="glyphicon glyphicon-share"></span></a>
             <a href="javascript:;"><span class="glyphicon glyphicon-trash"></span></a>-->
@@ -79,38 +79,14 @@
             <p>
            <?php echo $add->description?>
             </p>  
-            <ul class="ConDtls">
-              <li class="mob"><?php echo $add->contact_no?></li>
-               <?php
-			  if(!empty($add->email)){?>
-              <li class="email"><?php echo $add->email?></li>
-              <?php
-			  }?>
-              <li class="location"><?php echo explode(',',$add->city_name)[0]?></li>
-            </ul> 
-             <!--map-->  
-            <div class="Ctrl">
-            	<input type="hidden" class="lat" value="<?php echo $add->latitude?>" />
-                <input type="hidden" class="lng" value="<?php echo $add->longitude?>" />
-              <div class="map" id="map_canvas_<?php echo $k?>">
-              
-              </div>
-        	</div> <!--map-->         
+           
+             
         </div>
         
-        <div class="adv">
-        	<h4><?php echo $add->rental_amount?></h4>
-            <?php
-			if($add->available_for==1){?>
-            	<p><?php echo $periods[($add->rental_period)-1]?></p>
-            <?php
-			}
-			if(!empty($add->security_deposit)){
-			?>
-            <p>&nbsp;</p>
-            <p>Security Deposit:<?php echo $add->security_deposit;?></p>
-            <?php
-			}?>
+        <div class="adv" style="margin-top:-50px">
+        	<h4><?php echo $add->price?></h4>
+            	<input type="button" value="Buy It Now" class="btn" style="float:left" />
+            	<input type="button" value="Add to cart " class="btn" style="margin-top:10px" />
         </div>
       </div>
     </div>
