@@ -31,6 +31,13 @@ class Adds extends Model{
 	 {
 		return $this->belongsTo('App\Models\Category\Category');	
 	 }
+	  /**
+		 * Setting up the inverse-relationship with category
+	 */
+	 public function manufacturer()
+	 {
+		return $this->belongsTo('Manufacturer');	
+	 }
 	 /**
 		 * Setting up the relationship with image
 	 */

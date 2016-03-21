@@ -214,5 +214,9 @@ class AddController extends BaseController {
 		}
 	
 	}
-
+	function show($id)
+	{
+		$data['add']=Adds::getById($id);
+		return View::make('adds.show',$data);
+	}
 }

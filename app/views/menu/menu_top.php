@@ -60,11 +60,11 @@
 				foreach($mainCategories as $category){
 			?>
 			 <li class="dropdown">
-          		<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category->name?></a>
+          		<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"  id="<?php echo $category->id?>" data-title="main"><?php echo $category->name?></a>
               <ul class="dropdown-menu" role="menu">
 			 		<?php $sub_cats =  Category::getSubCategoriesByParent($category->id);
 					foreach($sub_cats as $category){?>
-                <li><a href="#"><?php echo $category->name?></a></li>
+                <li><a href="javascript:;" id="<?php echo $category->id?>" data-title="sub"><?php echo $category->name?></a></li>
 				<?php }?>
               </ul>
         </li>

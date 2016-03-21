@@ -53,8 +53,10 @@ class AddsProvider{
 			}
 			//only key
 			else if(empty($category) && empty($location) && !empty($key)){
+				
 				return $adds::where('title','LIKE','%'.$key.'%')
 							->orderBy('id','dec')
+							->groupBy('id')
 							 ->paginate(20);	
 			}
 			//only location and category
@@ -96,14 +98,34 @@ class AddsProvider{
 							 ->paginate(20);	
 			}
 			//only key
-			else if(empty($category) && empty($location) && !empty($key)){
+			else if(empty($category) && empty($location) && !empty($key)){  
+				//by brand
+				$brands = DB::table('manufacturer')
+							-> where('name','LIKE','%'.$key.'%')
+							->select('id')
+							->get();	
+				$brand_ids = array();
+				foreach($brands as $brand){
+					$brand_ids []=$brand->id;
+				}
+				//by category
+				$cats = DB::table('category')
+							-> where('name','LIKE','%'.$key.'%')
+							->select('id')
+							->get();	
+				$cat_ids = array();
+				foreach($cats as $cat){
+					$cat_ids []=$cat->id;
+				}
 				return $adds::where('title','LIKE','%'.$key.'%')
 				 			 ->where('is_active','=',1)
+							 ->orWhereIn('manufacturer_id',$brand_ids)
+							 ->orWhereIn('category_id',$cat_ids)
 							 ->orderBy('id','dec')
 							 ->paginate(20);	
 			}
 			//only location and category
-			else if(!empty($category) && !empty($location) && empty($key)){
+			else if(!empty($category) && !empty($location) && empty($key)){ 
 				return $adds::where('city_name','like','%'.$location.'%')
 							 ->whereIn('category_id',$category)
 				 			 ->where('is_active','=',1)

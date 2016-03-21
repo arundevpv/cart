@@ -67,7 +67,7 @@ class CategoryController extends BaseController {
 				 Image::make(Input::file('photo')->getRealPath())->save('uploads/category/'.$image);
 				$photo=$image;
 			}
-			$categoryData=array('name'=>Input::get('category'),'parent_id'=>Input::get('parent'),'photo'=>$photo);
+			$categoryData=array('name'=>Input::get('category'),'parent_id'=>Input::get('parent'),'photo'=>$photo,'shown_home_page'=>Input::get('show_home'));
 			Category::add($categoryData);
 			$message="Category Successfully added";
 		}

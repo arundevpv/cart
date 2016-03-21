@@ -26,6 +26,14 @@ $parentCategory=array();$parent=array();
       </div>
       <div class="row">
         <div class="lbl">
+          <label for="txtCName" class="">Shown in homepage</label>
+        </div>
+        <div class="Ctrl">
+         <input type="radio" value="1"  name="show_home"/>Yes<input type="radio" value="0" name="show_home" checked="checked"/>No
+        </div>
+      </div>
+      <div class="row">
+        <div class="lbl">
           <label for="parent">ParentCategory</label>
         </div>
         <div class="Ctrl">

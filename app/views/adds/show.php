@@ -1,15 +1,16 @@
- <?php echo $adds->links();?>
-<ul class="ProList fullWidth no-mgn">
-<?php
+<?php echo View::make('menu.menu_meta');?>
+<?php echo View::make('menu.menu_top');?>
+<div class="" id="search_res">
+  <ul class="ProList">
+	<?php
 	$counter=1;$k=0;
-    foreach($adds as $add){
 		$images=$add->image;
 		$class='';
 		if($add->is_active==0)
 		  $class="Hidden";
 		?>
-     <li>
-      <div class="Card" data-id="<?php echo $add->id?>">
+     <li class="active">
+      <div class="Card">
       <div class="Photo">
         <?php
 		if(count($images)>1){?>
@@ -85,11 +86,10 @@
         
         <div class="adv" style="margin-top:-50px">
         	<h4><?php echo $add->price?></h4>
-             <p>Quantity <?php echo $add->quantity?></p>
-          <p>Brand <span class="brans" style="color:#03C"><?php echo $add->manufacturer->name?></span></p>
-          <p>Model <?php echo $add->model?></p>
-            	<input type="button" value="Buy It Now" class="btn" style="float:left" />
-            	<input type="button" value="Add to cart " class="btn" style="margin-top:10px" />
+            <p>Brand <span class="brans" style="color:#03C"><?php echo $add->manufacturer->name?></span></p>
+          	<p>Model <?php echo $add->model?></p>
+            	<input type="button" value="Buy It Now" class="btn" style="float:left" onclick="alert('Register/Login')"/>
+            	<input type="button" value="Add to cart " class="btn" style="margin-top:10px" onclick="alert('Register/Login')" />
         </div>
       </div>
     </div>
@@ -98,6 +98,9 @@
 	   $sub_class_p='';
 	   $counter++;
 	   $k++;
-    }?>
+    ?>
    </ul>
- <?php echo $adds->links();?>
+   </div>
+<h3>RELATED PRODUCTS</h3>
+<?php echo View::make('admin.menu.script_loader');?>
+<?php echo View::make('menu.menu_footer');?>

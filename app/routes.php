@@ -28,6 +28,7 @@ Route::group(array('prefix' => 'admin'),function(){
 	Route::get('/','AdminController@index');
 	Route::post('authenticate','AdminController@authenticate');
 	Route::group(array('before'=>'admin'),function() {
+		Route::get('dashboard','AdminController@dashboard');
 		Route::get('adds','AdminController@adds');
 		Route::post('search','AdminController@search');
 		Route::get('change-status/{status?}/{id?}','AddController@changeStatus');
@@ -69,5 +70,6 @@ Route::group(array('prefix' => 'users'),function(){
 	Route::get('logout','UserController@logout');
 });
 });
+Route::get('product/{id}','AddController@show');
 Route::post('generate-password','UserController@generatePassword');
 Route::post('login','UserController@login');

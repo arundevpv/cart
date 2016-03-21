@@ -51,7 +51,7 @@ class AdminController extends BaseController
 			if(!empty($message))
 				return Redirect::to('admin')->with('message',$message)->withInput();
 			else
-				return Redirect::to('admin/adds');
+				return Redirect::to('admin/dashboard');
 		}
 	}
 	/*
@@ -112,6 +112,14 @@ class AdminController extends BaseController
 	{
 		User::logout();
 		return Redirect::to('admin');
+	}
+	function dashboard()
+	{
+		 echo View::make('admin.menu.menu_meta');
+		 echo View::make('admin.menu.menu_top');
+		 echo View::make('admin.menu.script_loader');
+		 echo View::make('admin.menu.menu_footer');
+
 	}
 }
 ?>

@@ -1,11 +1,17 @@
 <script type="text/javascript">
 $(document).ready(function(e) {
+	var tmp=0;
     var xhr11=null;var xhr1=null;
 	$('#category_search').change(function(){
 		searchAdd();
 	});
-	$('#searchKey').keyup(function(){
-		if($(this).val().length>=3){searchAdd();}
+	$('#searchKey').keypress(function(e){
+		if(e.which==13 || tmp==1){
+			$('#category').val('');
+			e.preventDefault();
+			tmp=0;
+			searchAdd();
+		}
 	});
 	$('#location_search').focusout(function(){
 		if($(this).val()!="")
@@ -26,7 +32,7 @@ $(document).ready(function(e) {
 		if($(this).attr('id')==0)
 			viewAll();
 	});
-	$('.AccordionMenu .subNav').find('li > a').click(function(){
+	$('.AccordionMenu .subNav,ul.dropdown-menu').find('li > a').click(function(){
 		$('#category').val($(this).attr('id'));
 		$('#type').val('sub');
 		$('#page').val('');
@@ -123,6 +129,16 @@ $(document).ready(function(e) {
 	});
 	$('.main').click(function(){
 		$(".myads_block").removeClass("display");
+	});
+	$('.Photo').live('click',function(){
+		if($(this).parent().attr('data-id')===undefined){}
+		else
+			window.location="<?php echo Request::root()?>/product/"+$(this).parent().attr('data-id');
+	});
+	$('.brans').live('click',function(){
+		$('#searchKey').val($(this).text());
+		tmp=1;
+		$('#searchKey').trigger('keypress');
 	});
 });
 </script>

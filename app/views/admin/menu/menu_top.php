@@ -49,7 +49,7 @@
           <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">Master</a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="<?php echo Request::root()?>/admin/category/add">Category</a></li>
-				 <li><a href="<?php echo Request::root()?>/adds">Products</a></li>
+				 <li><a href="<?php echo Request::root()?>/admin/adds">Products</a></li>
 				 <li><a href="<?php echo Request::root()?>/admin/banners">Banners</a></li>
 				  <li><a href="<?php echo Request::root()?>/admin/manufacture">Manufacturer</a></li>
               </ul>
@@ -146,9 +146,9 @@ $hiden_class='';
 </div>
 <div class="container main <?php echo $hiden_class?>">
 <?php
-if(!empty(Session::get('message'))){?>
-<div class="message fadeOut"><?php echo Session::get('message');?></div>
-<?php
-}?>
+//if(!empty(Session::get('message'))){?>
+<!--<div class="message fadeOut"><?php //echo Session::get('message');?></div>
+--><?php
+//}?>
 <div class="row">
 

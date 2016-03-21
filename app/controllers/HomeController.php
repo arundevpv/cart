@@ -50,13 +50,15 @@ class HomeController extends BaseController {
 			$data['adds']=Adds::search($params,1);	// only active
 		}
 		else{
-				$subCategories=Category::getSubCategories();	// list all adds
-				foreach($subCategories as $subc)
-				{
-					$sub[]=$subc->id;
+				if(!empty($params['category'])){
+					$subCategories=Category::getSubCategories();	// list all adds
+					foreach($subCategories as $subc)
+					{
+						$sub[]=$subc->id;
+					}
+					$params['category']=$sub;
 				}
-				$params['category']=$sub;
-				$data['adds']=Adds::search($params,1);	// only active
+				 $data['adds']=Adds::search($params,1);	// only active
 		}		
 		$data['periods']=Config::get('rental_periods');
 		return View::make('ajax.add_search',$data);
